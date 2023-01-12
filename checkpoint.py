@@ -1,6 +1,7 @@
 # Importante: No modificar ni el nombre ni los argumetos que reciben las funciones, sólo deben escribir
 # código dentro de las funciones ya definidas.
-
+from collections.abc import Iterable
+from collections import Counter
 def ListaDivisibles(numero, tope):
     '''
     Esta función devuelve una lista ordenada de menor a mayor con los números divisibles 
@@ -14,7 +15,12 @@ def ListaDivisibles(numero, tope):
         ListaDivisibles(7,50) debe retornar [7,14,21,28,35,42,49]
     '''
     #Tu código aca:
-    return 'Funcion incompleta'
+    array = []
+    for i in range (1,tope):
+        if i%numero==0:
+            array.append(i)
+
+    return array
 
 def Exponente(numero, exponente):
     '''
@@ -26,23 +32,24 @@ def Exponente(numero, exponente):
         Exponente(10,3) debe retornar 1000
     '''
     #Tu código aca:
-    return 'Funcion incompleta'
+    return numero**exponente
+
 
 def ListaDeListas(lista):
-    '''
-    Esta función recibe una lista, que puede contener elementos que a su vez sean listas y
-    devuelve esos elementos por separado en una lista única. 
-    En caso de que el parámetro no sea de tipo lista, debe retornar nulo.
-    Recibe un argumento:
-        lista: La lista que puede contener otras listas y se convierte a una 
-        lista de elementos únicos o no iterables.
-    Ej:
-        ListaDeListas([1,2,['a','b'],[10]]) debe retornar [1,2,'a','b',10]
-        ListaDeListas(108) debe retornar el valor nulo.
-        ListaDeListas([[1,2,[3]],[4]]) debe retornar [1,2,3,4]
-    '''
-    #Tu código aca:
-    return 'Funcion incompleta'
+
+    if not isinstance(lista, list):
+        raise TypeError("Inserte una lista...")
+
+    my_array = []
+    for i in lista:
+        if isinstance(i, Iterable)==True:
+            for element in i: 
+                my_array.append(element)
+        else:
+            my_array.append(i)
+                    
+
+    return my_array
 
 def Factorial(numero):
     '''
@@ -56,7 +63,13 @@ def Factorial(numero):
         Factorial(0) debe retornar 1
     '''
     #Tu código aca:
-    return 'Funcion incompleta'
+    
+    if numero>1 and isinstance(numero, int)==True:         
+        numero = numero*Factorial(numero-1)
+    else:
+        raise TypeError("Inserte un numero entero mayor que 0")
+
+    return numero
 
 def ListaPrimos(desde, hasta):
     '''
@@ -74,7 +87,22 @@ def ListaPrimos(desde, hasta):
         ListaPrimos(1,7) debe retonan [1,2,3,5,7]
     '''
     #Tu código aca:
-    return 'Funcion incompleta'
+    candidatos = []
+    primos = []
+    if hasta > desde and hasta != 0 and desde != 0:
+        for i in range(desde, hasta+1):
+            for e in range(1,i+1):
+                if i%e==0:
+                    candidatos.append(i)
+        contador = Counter(candidatos)
+        for key, value in contador.items():
+            if value == 2:
+                primos.append(key)
+            '''buscar los candidatos que esten presentes solamente dos veces e incluirlos en otra lista solo una vez (primos)'''
+    else:
+            print("Ambos valores deben ser mayores que cero y desde debe ser menor que hasta")
+                
+    return primos
 
 def ListaRepetidos(lista):
     '''
@@ -92,7 +120,11 @@ def ListaRepetidos(lista):
         ListaRepetidos([1,2,2,4]) debe retornar [(1,1),(2,2),(4,1)]
     '''
     #Tu código aca:
-    return 'Funcion incompleta'
+    if type(lista) == list:
+        repetidos = Counter(lista)
+    else:
+        print("inserta una lista...")
+    return repetidos
 
 def ClaseVehiculo(tipo, color):
     '''
