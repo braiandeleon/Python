@@ -1,4 +1,10 @@
+
+
+
+
 # HENRY CHALLENGE - Python y Matemática
+
+## Hola, Infolink! Este es un repositiorio de un curso de data science que estoy tomando. No quiere decir que todo lo que esta esfrito aquí es lo unico que conozco. Sientanse libres de preguntarme mas al respecto. Saludos!
 
 ### Bienvenido al Henry Challenge sobre Python y Matemática para la carrera Data Science.
 
